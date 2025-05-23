@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Services - Dream Coaching Classes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0; padding: 0;
+      background: #f4f7ff;
+      color: #333;
+    }
+    header, footer {
+      background: #182848;
+      color: #f0f4fd;
+      padding: 1rem 2rem;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 0;
+      margin: 0;
+    }
+    nav ul li a {
+      color: #f0f4fd;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover, nav ul li a.active {
+      color: #ffd700;
+    }
+    .container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h1, h2, h3 {
+      color: #182848;
+    }
+    h1 {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .services-section {
+      margin-bottom: 3rem;
+    }
+    .services-section h2 {
+      border-bottom: 2px solid #4b6cb7;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    ul.service-list {
+      list-style: none;
+      padding-left: 1.2rem;
+      color: #444;
+    }
+    ul.service-list li {
+      margin-bottom: 0.6rem;
+      font-size: 1.05rem;
+      position: relative;
+      padding-left: 1.4rem;
+    }
+    ul.service-list li::before {
+      content: "🎯";  /* bullet emoji */
+      position: absolute;
+      left: 0;
+    }
+    /* Different bullet emoji for categories */
+    ul.academic-list li::before { content: "🎓"; }
+    ul.competitive-list li::before { content: "🧠"; }
+    ul.skill-list li::before { content: "💻"; }
+    ul.personalized-list li::before { content: "📚"; }
+    ul.addons-list li::before { content: "🗓️"; }
+
+    /* Book Now Button */
+    .book-btn {
+      background-color: #4b6cb7;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s;
+      margin-top: 1rem;
+      display: inline-block;
+    }
+    .book-btn:hover {
+      background-color: #3554a2;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.6);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 2rem;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 10px;
+      position: relative;
+    }
+    .modal-content h2 {
+      margin-top: 0;
+      color: #182848;
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #999;
+    }
+    .modal-content input, .modal-content textarea {
+      width: 100%;
+      padding: 0.7rem;
+      margin: 0.5rem 0 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .modal-content button {
+      background-color: #182848;
+      color: #fff;
+      padding: 0.7rem 1rem;
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    /* Footer Styles */
+    footer {
+      margin-top: 2rem;
+      padding-top: 2rem;
+    }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #444;
+    }
+    .footer-column {
+      flex: 1 1 200px;
+    }
+    .footer-column h3 {
+      margin-bottom: 0.7rem;
+      color: #ffd700;
+    }
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-column ul li a {
+      color: #f0f4fd;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    .footer-column ul li a:hover {
+      text-decoration: underline;
+    }
+    .social-icons a {
+      color: #f0f4fd;
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+    .newsletter input {
+      padding: 0.5rem;
+      border: none;
+      border-radius: 4px;
+      margin-top: 0.5rem;
+      width: 80%;
+    }
+    .newsletter button {
+      margin-top: 0.5rem;
+      background: #ffd700;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .footer-bottom {
+      text-align: center;
+      padding-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav ul { flex-direction: column; gap: 0.5rem; }
+      .footer-grid { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul>
+         <li><a href="home.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="service.html">Services</a></li>
+        <li><a href="tetiminoals.html">Testimonials</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Our Services</h1>
+
+    <!-- Academic Coaching -->
+    <section class="services-section">
+      <h2>🎓 Academic Coaching</h2>
+      <ul class="service-list academic-list">
+        <li>Class 9th & 10th CBSE Preparation</li>
+        <li>Science & Math Special Batches</li>
+        <li>English Grammar & Communication Skills</li>
+        <li>Crash Courses for Board Exams</li>
+      </ul>
+      <button class="book-btn" onclick="openModal()">Book Academic Coaching</button>
+    </section>
+
+    <!-- Competitive Exams -->
+    <section class="services-section">
+      <h2>🧠 Competitive Exams</h2>
+      <ul class="service-list competitive-list">
+        <li>NTSE / Olympiads Coaching</li>
+        <li>Entrance Exam (CUET / NDA / SSC)</li>
+        <li>Banking / SSC / Railway Coaching</li>
+      </ul>
+      <button class="book-btn" onclick="openModal()">Book Competitive Exams Coaching</button>
+    </section>
+
+    <!-- Skill-based -->
+    <section class="services-section">
+      <h2>💻 Skill-based Courses</h2>
+      <ul class="service-list skill-list">
+        <li>Spoken English & Interview Preparation</li>
+        <li>Computer Classes (MS Office, HTML, Python)</li>
+        <li>Typing & Basic Computer Course</li>
+      </ul>
+      <button class="book-btn" onclick="openModal()">Book Skill-based Courses</button>
+    </section>
+
+    <!-- Personalized Help -->
+    <section class="services-section">
+      <h2>📚 Personalized Help</h2>
+      <ul class="service-list personalized-list">
+        <li>Doubt Clearing Sessions</li>
+        <li>One-to-One Mentorship Program</li>
+      </ul>
+      <button class="book-btn" onclick="openModal()">Book Personalized Help</button>
+    </section>
+
+    <!-- Add-ons -->
+    <section class="services-section">
+      <h2>🗓️ Add-ons</h2>
+      <ul class="service-list addons-list">
+        <li>Weekly Mock Tests</li>
+        <li>Daily Practice Sheets</li>
+        <li>Parent Counselling Sessions</li>
+        <li>Holiday Homework Support (Summer/Winter)</li>
+      </ul>
+      <button class="book-btn" onclick="openModal()">Book Add-ons</button>
+    </section>
+  </main>
+
+  <!-- Modal Popup Form -->
+  <div id="bookingModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Book Your Session</h2>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Email Address" required />
+      <textarea rows="4" placeholder="Your Message or Preferred Time"></textarea>
+      <button type="submit">Submit</button>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-column">
+        <h3>Dream Coaching Classes</h3>
+        <p>Your growth partner in academics, competitive exams, and career success.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Newsletter</h3>
+        <div class="newsletter">
+          <input type="email" placeholder="Your Email" />
+          <button>Subscribe</button>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Dream Coaching Classes. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function openModal() {
+      document.getElementById("bookingModal").style.display = "block";
+    }
+    function closeModal() {
+      document.getElementById("bookingModal").style.display = "none";
+    }
+    window.onclick = function(event) {
+      if (event.target == document.getElementById("bookingModal")) {
+        closeModal();
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home - Dream Coaching</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: #f4f7ff;
+      color: #333;
+    }
+    header, footer {
+      background: #182848;
+      color: #f0f4fd;
+      padding: 1rem 2rem;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      padding: 0;
+      margin: 0;
+    }
+    nav ul li a {
+      color: #f0f4fd;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    nav ul li a:hover, nav ul li a.active {
+      color: #ffd700;
+    }
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .hero {
+      background: url('https://images.unsplash.com/photo-1515174781221-0ecaba2900a8?auto=format&fit=crop&w=1471&q=80') no-repeat center center/cover;
+      border-radius: 10px;
+      color: #fff;
+      padding: 4rem 2rem;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+    }
+    .btn-primary {
+      background: #ffd700;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #222;
+      transition: background 0.3s ease;
+      margin-top: 2rem;
+    }
+    .btn-primary:hover {
+      background: #e6c200;
+    }
+    #popup {
+      display: none;
+      background: #fff;
+      padding: 20px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      margin-top: 2rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      color: #222;
+    }
+    h1#greeting {
+      color: #182848;
+    }
+    .testimonial {
+      background: #fff;
+      border-left: 5px solid #ffd700;
+      padding: 1rem;
+      margin-top: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .marquee {
+      background: #ffd700;
+      color: #182848;
+      font-weight: bold;
+      padding: 0.5rem;
+      margin-top: 2rem;
+      border-radius: 8px;
+    }
+    footer p, footer ul, footer form {
+      margin: 0.5rem 0;
+    }
+    footer ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    footer ul li a {
+      color: #f0f4fd;
+      text-decoration: none;
+    }
+    footer input[type="email"] {
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: none;
+      margin-right: 0.5rem;
+    }
+    #subscriptionMessage {
+      color: #ffd700;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="service.html">Services</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1 id="greeting"></h1>
+
+    <section class="hero" aria-label="Hero Section">
+      <h1 id="type"></h1>
+      <p>Personalized coaching programs designed to help you achieve your dreams and reach your full potential.</p>
+      <button class="btn-primary" onclick="showPopup()">Claim Free Demo</button>
+    </section>
+
+    <div id="popup">
+      <p>🎉 Welcome to Dream Coaching! Fill the form on Contact page to register for a Free Demo Class.</p>
+      <button class="btn-primary" onclick="closePopup()">Close</button>
+    </div>
+
+    <div class="marquee">
+      <marquee behavior="scroll" direction="left">📣 New Batch starting July 1 | JEE/NEET Foundation | Admission Open Now!</marquee>
+    </div>
+
+    <section>
+      <h2>🌟 Student Testimonials</h2>
+      <div class="testimonial">“Dream Coaching helped me score 95% in boards! Highly recommended.” – 👩‍🎓 Riya Sharma</div>
+      <div class="testimonial">“Best faculty and daily practice sessions. Cleared my doubts easily.” – 👨‍🎓 Aman Verma</div>
+    </section>
+  </main>
+
+  <footer>
+    <p>📍 Ajmer, Rajasthan | 📞 +91 98765 43210 | ✉️ dreamcoaching@gmail.com</p>
+    
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Courses</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <p>Follow us:
+      <a href="#">📘</a>
+      <a href="#">📷</a>
+      <a href="#">📱</a>
+    </p>
+
+    <form onsubmit="subscribeEmail(); return false;">
+      <input type="email" id="email" placeholder="Enter your email" required />
+      <button class="btn-primary">Subscribe</button>
+      <p id="subscriptionMessage"></p>
+    </form>
+
+    <p>© 2024 Dream Coaching. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Time-based greeting
+    const hour = new Date().getHours();
+    const greeting = document.getElementById("greeting");
+    if (hour < 12) {
+      greeting.textContent = "🌞 Good Morning from Dream Coaching!";
+    } else if (hour < 18) {
+      greeting.textContent = "🌤️ Good Afternoon from Dream Coaching!";
+    } else {
+      greeting.textContent = "🌙 Good Evening from Dream Coaching!";
+    }
+
+    // Typing effect
+    const text = "Unlock Your Potential with Dream Coaching";
+    let i = 0;
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("type").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 60);
+      }
+    }
+    typeWriter();
+
+    // Popup functionality
+    function showPopup() {
+      document.getElementById("popup").style.display = "block";
+    }
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+    // Subscription form
+    function subscribeEmail() {
+      const email = document.getElementById("email").value;
+      document.getElementById("subscriptionMessage").innerText = `✅ Thanks for subscribing, ${email}!`;
+      document.getElementById("email").value = "";
+    }
+  </script>
+</body>
+</html>
+ 

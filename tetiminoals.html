@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Testimonials - Dream Coaching Classes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: #f4f7ff;
+      color: #333;
+    }
+    header {
+      background: #182848;
+      color: #f0f4fd;
+      padding: 1rem 2rem;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      padding: 0;
+      margin: 0;
+    }
+    nav ul li a {
+      color: #f0f4fd;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    nav ul li a:hover, nav ul li a.active {
+      color: #ffd700;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      text-align: center;
+    }
+    h1, h2 {
+      color: #182848;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      font-size: 1.3rem;
+      color: #444;
+      min-height: 100px;
+      margin-bottom: 1rem;
+    }
+    .testimonial-author {
+      font-weight: 600;
+      color: #182848;
+      margin-bottom: 2rem;
+    }
+    .testimonial-nav button {
+      background: #4b6cb7;
+      border: none;
+      color: #fff;
+      padding: 0.7rem 2rem;
+      margin: 0 0.5rem;
+      font-weight: 600;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    .testimonial-nav button:hover {
+      background: #182848;
+    }
+
+    /* Student Score Boxes */
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .score-box {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 1rem;
+      text-align: center;
+    }
+    .score-box img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 0.5rem;
+    }
+    .score-box h3 {
+      margin: 0.5rem 0 0;
+      font-size: 1.1rem;
+      color: #182848;
+    }
+    .score-box p {
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* Video + Map */
+    iframe.video, iframe.map {
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      margin-top: 2rem;
+    }
+    iframe.video {
+      height: 315px;
+    }
+    iframe.map {
+      height: 300px;
+    }
+
+    /* Creative Footer */
+    footer {
+      background: #182848;
+      color: #fff;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+    }
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-around;
+      text-align: left;
+    }
+    .footer-section h4 {
+      margin-bottom: 1rem;
+      color: #ffd700;
+    }
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-section ul li a {
+      color: #ddd;
+      text-decoration: none;
+    }
+    .footer-section ul li a:hover {
+      color: #fff;
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <nav>
+      <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="about.html">about</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="tetiminoals.html">Testimonials</a></li>
+          <li><a href="contact.html">Contact</a></li>
+
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <h1>What Our Students Say</h1>
+    <p class="testimonial-text" id="testimonial-text">"Dream Coaching helped me crack my board exams with confidence!"</p>
+    <p class="testimonial-author" id="testimonial-author">- Priya S.</p>
+    <div class="testimonial-nav">
+      <button onclick="changeTestimonial(-1)">&#8592; Prev</button>
+      <button onclick="changeTestimonial(1)">Next &#8594;</button>
+    </div>
+
+    <!-- Student Scores -->
+    <h2>📊 Top Performers</h2>
+    <div class="score-grid">
+      <div class="score-box">
+        <img src="topper1.jpg" alt="Student 1">
+        <h3>Rahul Sharma</h3>
+        <p>Score: 95%</p>
+      </div>
+      <div class="score-box">
+        <img src="topper2.jpg" alt="Student 2">
+        <h3>Simran Kaur</h3>
+        <p>Score: 93%</p>
+      </div>
+      <div class="score-box">
+        <img src="topper3.jpg" alt="Student 3">
+        <h3>Aman Verma</h3>
+        <p>Score: 91%</p>
+      </div>
+    </div>
+
+    <!-- Motivational Video -->
+    <h2>🎥 Motivational Video</h2>
+    <iframe class="video" src="https://www.youtube.com/embed/UNQhuFL6CWg" allowfullscreen></iframe>
+
+    <!-- Google Map -->
+    <h2>📍 Our Location</h2>
+    <iframe class="map"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.029632031715!2d74.6305914143876!3d26.469197783319665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be716b87725a7%3A0xd6d0d03d14951fa5!2sSophia%20Girls'%20College%20(Ajmer)!5e0!3m2!1sen!2sin!4v1689003748904!5m2!1sen!2sin"
+      loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Dream Coaching</h4>
+        <p>Your success is our mission. Join the best coaching in Ajmer.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="about.html">about</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="tetiminoals.html">Testimonials</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <p>📍 Ajmer, Rajasthan</p>
+        <p>📞 +91 98765 43210</p>
+        <p>✉️ dreamcoaching@email.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Dream Coaching Classes. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    const testimonials = [
+      {
+        text: '"Dream Coaching helped me crack my board exams with confidence!"',
+        author: "- Priya S."
+      },
+      {
+        text: '"The doubt-clearing sessions are top-notch. Highly recommended!"',
+        author: "- Raj K."
+      },
+      {
+        text: '"Best coaching in Ajmer. I loved the personal mentorship support."',
+        author: "- Anjali M."
+      }
+    ];
+
+    let currentIndex = 0;
+    function changeTestimonial(direction) {
+      currentIndex += direction;
+      if (currentIndex < 0) currentIndex = testimonials.length - 1;
+      if (currentIndex >= testimonials.length) currentIndex = 0;
+      document.getElementById("testimonial-text").textContent = testimonials[currentIndex].text;
+      document.getElementById("testimonial-author").textContent = testimonials[currentIndex].author;
+    }
+  </script>
+</body>
+</html>
